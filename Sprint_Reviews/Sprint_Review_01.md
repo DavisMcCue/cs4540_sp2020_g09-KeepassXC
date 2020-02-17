@@ -23,3 +23,24 @@ I've learned a bit more on how the Qt interface works and how I can use it along
 I still am confused on how I can get my code to properly debug within visual studios, this could be extremely beneficial for future sprints.
 #### What can we change to improve:
 For the future sprints I am going to work on getting the debugger working so I can decrease time spent on issues exponentially.
+
+## Prabesh Poudel
+
+#### What went well?
+I was able to make some progress and solve some part of the issue. I was able to
+issue warning when the attachment size was greater than 5MB and also when collective
+size of database was greater than 50MB.
+#### What didn’t go so well?
+I had to break down the original issue into two different parts because there were
+multiple issues some of which required deeper understanding of the codebase.
+#### What have I learned?
+I have learned how to work with cmake to compile and build 
+large project with multiple source files, which I haven't had chance to do 
+before. Also, I got the chance to learn about git.
+#### What still puzzles me?
+It is so confusing to track the work flow of the program because of its mature and
+large code
+base.
+#### What will we change to improve?
+We will have to include more testing and develop better 
+understanding of the project itself.
