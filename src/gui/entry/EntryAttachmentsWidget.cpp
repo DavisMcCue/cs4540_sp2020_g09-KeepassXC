@@ -142,6 +142,29 @@ void EntryAttachmentsWidget::insertAttachments()
     }
 
     const QStringList filenames = fileDialog()->getOpenFileNames(this, tr("Select files"), defaultDirPath);
+    
+    QString attachmentSize;
+
+    for(int i =0;i<filenames.size();i++){
+       QFileInfo fileInfo(filenames[i]);
+       qint64 size = fileInfo.size();
+       
+       QString fileName = fileInfo.fileName();
+       
+       attachmentSize = QString::number(size/(1024*1024));
+       
+       if(attachmentSize.toInt()>5){
+       const QString question_size(
+                tr("Big file warning! Your file: %1 is a big file with %2 MiB."));
+        auto result = MessageBox::warning(this,
+                                       tr("Confirm add"),
+                                       question_size.arg(fileName,attachmentSize),
+                                       MessageBox::Yes,
+                                       MessageBox::Cancel);   
+    }
+    
+    }
+
     if (filenames.isEmpty()) {
         return;
     }

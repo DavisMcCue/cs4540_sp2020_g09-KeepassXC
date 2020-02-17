@@ -30,6 +30,7 @@
 #include "streams/HmacBlockStream.h"
 #include "streams/QtIOCompressor"
 #include "streams/SymmetricCipherStream.h"
+#include "gui/MessageBox.h"
 
 bool Kdbx4Writer::writeDatabase(QIODevice* device, Database* db)
 {
@@ -220,21 +221,32 @@ void Kdbx4Writer::writeAttachments(QIODevice* device, Database* db)
 {
     const QList<Entry*> allEntries = db->rootGroup()->entriesRecursive(true);
     QSet<QByteArray> writtenAttachments;
-
+    int collectiveSizeOfAttachments=0;
     for (Entry* entry : allEntries) {
         const QList<QString> attachmentKeys = entry->attachments()->keys();
+        const int attachmentsize = entry->attachments()->attachmentsSize();
+        collectiveSizeOfAttachments+=attachmentsize;
         for (const QString& key : attachmentKeys) {
             QByteArray data("\x01");
             data.append(entry->attachments()->value(key));
-
             if (writtenAttachments.contains(data)) {
                 continue;
             }
-
-            writeInnerHeaderField(device, KeePass2::InnerHeaderFieldID::Binary, data);
-            writtenAttachments.insert(data);
+        writeInnerHeaderField(device, KeePass2::InnerHeaderFieldID::Binary, data);
+        writtenAttachments.insert(data);
         }
+
     }
+    if (collectiveSizeOfAttachments>50*1024*1024){
+        const QString dbSize(
+        tr("Your total DB size is : %1 MiB, Consider cleaning the database!")); 
+        MessageBox::warning(NULL,
+                            tr("DB size growing a lot!"),
+                            dbSize.arg(collectiveSizeOfAttachments/(1024*1024)),
+                            MessageBox::Yes,
+                            MessageBox::Cancel);
+        }
+   
 }
 
 /**
