@@ -44,3 +44,23 @@ base.
 #### What will we change to improve?
 We will have to include more testing and develop better 
 understanding of the project itself.
+
+## Davis McCue
+#### What went well?
+I was able to make some progress by adding a Sort function that took a password that was deleted 
+and add a date to it in the recycling bin and that way the sort function will be able to sort it.
+where old passwords are at the bottom and new deleted passwords are at the top.
+#### What didn’t go so well?
+Getting the command line to properly work is still an issue. The only thing that I can do at the 
+moment is use the search function to navigate through the code to find where code links up but, testing 
+is a big issue because I cant compile and run the code. 
+#### What have I learned?
+I have learn how to effectively search through VS code and pin-point certain code that I want to trace. I have 
+also learned how to use git and gitbash. I have learned how to use cmake more. But, this project is a work in progress 
+and there much, much more too learn.
+#### What still puzzles me?
+I still don't understand why the command line and cmake arent working together. I don't know if the path is corrupted or 
+something else. Still trying to figure it out.
+#### What will we change to improve?
+make more test for our code that we implement into their already standing code. Make sure to get our IDE constantly working 
+all the time and not here and there like they are now.
