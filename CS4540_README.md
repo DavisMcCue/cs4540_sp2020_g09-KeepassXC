@@ -24,5 +24,3 @@ From CONTRIBUTING.md:
 > * develop – points to the development of the next release, contains tested and reviewed code  
 > * feature/\[name\] – points to a branch with a new feature, one which is candidate for merge into develop (subject to rebase)  
 > * hotfix/\[name\] – points to a branch with a fix for a particular issue ID  
-
-In addition to this strategy, we have added a cs4540 branch. CS4540-specific documentation is committed to the cs4540 branch, and develop is merged into cs4540 at the end of every milestone. This will make it easier to merge with upstream later by keeping develop clean.
