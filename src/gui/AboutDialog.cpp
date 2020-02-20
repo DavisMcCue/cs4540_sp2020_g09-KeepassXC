@@ -60,7 +60,6 @@ static const QString aboutContributors = R"(
 </ul>
 <h3>Notable Code Contributions:</h3>
 <ul>
-    <li>Brad Puthoff</li>
     <li>droidmonkey</li>
     <li>phoerious</li>
     <li>TheZ3ro</li>
