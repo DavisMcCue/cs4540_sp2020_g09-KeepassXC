@@ -39,6 +39,8 @@ static const QMap<QString, QString> deprecationMap = {
     {QStringLiteral("GUI/DetailSplitterState"), QStringLiteral("GUI/PreviewSplitterState")},
     // >2.3.4
     {QStringLiteral("security/IconDownloadFallbackToGoogle"), QStringLiteral("security/IconDownloadFallback")},
+    // >x.x.x
+    {QStringLiteral("IgnoreGroupExpansion"), QStringLiteral("TrackNonDataChanges")},
 };
 
 Config* Config::m_instance(nullptr);
@@ -102,9 +104,15 @@ void Config::upgrade()
     for (const auto& setting : keys) {
         if (m_settings->contains(setting)) {
             if (!deprecationMap.value(setting).isEmpty()) {
-                // Add entry with new name and old entry's value
-                m_settings->setValue(deprecationMap.value(setting), m_settings->value(setting));
+                if (setting == QStringLiteral("IgnoreGroupExpansion")) {
+                    // Add entry with new name and opposite of old entry's value
+                    m_settings->setValue(deprecationMap.value(setting), !m_settings->value(setting).toBool());
+                } else {
+                    // Add entry with new name and old entry's value
+                    m_settings->setValue(deprecationMap.value(setting), m_settings->value(setting));
+                }
             }
+
             m_settings->remove(setting);
         }
     }
