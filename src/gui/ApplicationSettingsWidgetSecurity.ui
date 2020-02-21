@@ -223,9 +223,9 @@
        </widget>
       </item>
       <item>
-       <widget class="QCheckBox" name="passwordRepeatCheckBox">
+       <widget class="QCheckBox" name="passwordsRepeatVisibleCheckBox">
         <property name="text">
-         <string>Don't require password repeat when it is visible</string>
+         <string>Require password repeat when it is visible</string>
         </property>
        </widget>
       </item>
@@ -302,7 +302,7 @@
   <tabstop>touchIDResetOnScreenLockCheckBox</tabstop>
   <tabstop>lockDatabaseMinimizeCheckBox</tabstop>
   <tabstop>relockDatabaseAutoTypeCheckBox</tabstop>
-  <tabstop>passwordRepeatCheckBox</tabstop>
+  <tabstop>passwordsRepeatVisibleCheckBox</tabstop>
   <tabstop>passwordCleartextCheckBox</tabstop>
   <tabstop>passwordShowDotsCheckBox</tabstop>
   <tabstop>passwordPreviewCleartextCheckBox</tabstop>

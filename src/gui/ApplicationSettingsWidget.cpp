@@ -262,7 +262,7 @@ void ApplicationSettingsWidget::loadSettings()
     m_secUi->passwordCleartextCheckBox->setChecked(config()->get("security/passwordscleartext").toBool());
     m_secUi->passwordShowDotsCheckBox->setChecked(config()->get("security/passwordemptynodots").toBool());
     m_secUi->passwordPreviewCleartextCheckBox->setChecked(config()->get("security/HidePasswordPreviewPanel").toBool());
-    m_secUi->passwordRepeatCheckBox->setChecked(config()->get("security/passwordsrepeat").toBool());
+    m_secUi->passwordsRepeatVisibleCheckBox->setChecked(config()->get("security/passwordsrepeatvisible").toBool());
     m_secUi->hideNotesCheckBox->setChecked(config()->get("security/hidenotes").toBool());
 
     m_secUi->touchIDResetCheckBox->setChecked(config()->get("security/resettouchid").toBool());
@@ -350,7 +350,7 @@ void ApplicationSettingsWidget::saveSettings()
     config()->set("security/passwordemptynodots", m_secUi->passwordShowDotsCheckBox->isChecked());
 
     config()->set("security/HidePasswordPreviewPanel", m_secUi->passwordPreviewCleartextCheckBox->isChecked());
-    config()->set("security/passwordsrepeat", m_secUi->passwordRepeatCheckBox->isChecked());
+    config()->set("security/passwordsrepeatvisible", m_secUi->passwordsRepeatVisibleCheckBox->isChecked());
     config()->set("security/hidenotes", m_secUi->hideNotesCheckBox->isChecked());
 
     config()->set("security/resettouchid", m_secUi->touchIDResetCheckBox->isChecked());
