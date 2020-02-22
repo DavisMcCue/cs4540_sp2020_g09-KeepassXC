@@ -156,7 +156,7 @@ void EntryAttachmentsWidget::insertAttachments()
        if(attachmentSize.toInt()>5){
        const QString question_size(
                 tr("Big file warning! Your file: %1 is a big file with %2 MiB."));
-        auto result = MessageBox::warning(this,
+        MessageBox::warning(this,
                                        tr("Confirm add"),
                                        question_size.arg(fileName,attachmentSize),
                                        MessageBox::Yes,
