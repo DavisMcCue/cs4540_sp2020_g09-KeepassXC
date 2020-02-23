@@ -39,6 +39,14 @@ static const QMap<QString, QString> deprecationMap = {
     {QStringLiteral("GUI/DetailSplitterState"), QStringLiteral("GUI/PreviewSplitterState")},
     // >2.3.4
     {QStringLiteral("security/IconDownloadFallbackToGoogle"), QStringLiteral("security/IconDownloadFallback")},
+    // >x.x.x
+    {QStringLiteral("IgnoreGroupExpansion"), QStringLiteral("TrackNonDataChanges")},
+    // >x.x.x
+    {QStringLiteral("security/passwordsrepeat"), QStringLiteral("security/passwordsrepeatvisible")},
+    // >x.x.x
+    {QStringLiteral("security/passwordscleartext"), QStringLiteral("security/passwordshidden")},
+    // >x.x.x
+    {QStringLiteral("security/passwordemptynodots"), QStringLiteral("security/passwordemptyplaceholder")},
 };
 
 Config* Config::m_instance(nullptr);
@@ -102,9 +110,18 @@ void Config::upgrade()
     for (const auto& setting : keys) {
         if (m_settings->contains(setting)) {
             if (!deprecationMap.value(setting).isEmpty()) {
-                // Add entry with new name and old entry's value
-                m_settings->setValue(deprecationMap.value(setting), m_settings->value(setting));
+                if (setting == QStringLiteral("IgnoreGroupExpansion")
+                    || setting == QStringLiteral("security/passwordsrepeat")
+                    || setting == QStringLiteral("security/passwordscleartext")
+                    || setting == QStringLiteral("security/passwordemptynodots")) {
+                    // Keep user's original setting for checkboxes whose meanings were reversed
+                    m_settings->setValue(deprecationMap.value(setting), !m_settings->value(setting).toBool());
+                } else {
+                    // Add entry with new name and old entry's value
+                    m_settings->setValue(deprecationMap.value(setting), m_settings->value(setting));
+                }
             }
+
             m_settings->remove(setting);
         }
     }
@@ -201,7 +218,7 @@ void Config::init(const QString& fileName)
     m_defaults.insert("AutoTypeDelay", 25);
     m_defaults.insert("AutoTypeStartDelay", 500);
     m_defaults.insert("UseGroupIconOnEntryCreation", true);
-    m_defaults.insert("IgnoreGroupExpansion", true);
+    m_defaults.insert("TrackNonDataChanges", false);
     m_defaults.insert("FaviconDownloadTimeout", 10);
     m_defaults.insert("security/clearclipboard", true);
     m_defaults.insert("security/clearclipboardtimeout", 10);
@@ -211,9 +228,9 @@ void Config::init(const QString& fileName)
     m_defaults.insert("security/lockdatabaseidlesec", 240);
     m_defaults.insert("security/lockdatabaseminimize", false);
     m_defaults.insert("security/lockdatabasescreenlock", true);
-    m_defaults.insert("security/passwordsrepeat", false);
-    m_defaults.insert("security/passwordscleartext", false);
-    m_defaults.insert("security/passwordemptynodots", true);
+    m_defaults.insert("security/passwordsrepeatvisible", true);
+    m_defaults.insert("security/passwordshidden", true);
+    m_defaults.insert("security/passwordemptyplaceholder", false);
     m_defaults.insert("security/HidePasswordPreviewPanel", true);
     m_defaults.insert("security/autotypeask", true);
     m_defaults.insert("security/IconDownloadFallback", false);
