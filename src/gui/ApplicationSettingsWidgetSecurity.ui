@@ -239,7 +239,7 @@
       <item>
        <widget class="QCheckBox" name="passwordShowDotsCheckBox">
         <property name="text">
-         <string>Don't use placeholder for empty password fields</string>
+         <string>Use placeholder for empty password fields</string>
         </property>
        </widget>
       </item>
