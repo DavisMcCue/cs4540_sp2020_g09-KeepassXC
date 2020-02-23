@@ -259,7 +259,7 @@ void ApplicationSettingsWidget::loadSettings()
     m_secUi->relockDatabaseAutoTypeCheckBox->setChecked(config()->get("security/relockautotype").toBool());
     m_secUi->fallbackToSearch->setChecked(config()->get("security/IconDownloadFallback").toBool());
 
-    m_secUi->passwordCleartextCheckBox->setChecked(config()->get("security/passwordscleartext").toBool());
+    m_secUi->passwordsHiddenCheckBox->setChecked(config()->get("security/passwordshidden").toBool());
     m_secUi->passwordShowDotsCheckBox->setChecked(config()->get("security/passwordemptynodots").toBool());
     m_secUi->passwordPreviewCleartextCheckBox->setChecked(config()->get("security/HidePasswordPreviewPanel").toBool());
     m_secUi->passwordsRepeatVisibleCheckBox->setChecked(config()->get("security/passwordsrepeatvisible").toBool());
@@ -346,7 +346,7 @@ void ApplicationSettingsWidget::saveSettings()
     config()->set("security/relockautotype", m_secUi->relockDatabaseAutoTypeCheckBox->isChecked());
     config()->set("security/IconDownloadFallback", m_secUi->fallbackToSearch->isChecked());
 
-    config()->set("security/passwordscleartext", m_secUi->passwordCleartextCheckBox->isChecked());
+    config()->set("security/passwordshidden", m_secUi->passwordsHiddenCheckBox->isChecked());
     config()->set("security/passwordemptynodots", m_secUi->passwordShowDotsCheckBox->isChecked());
 
     config()->set("security/HidePasswordPreviewPanel", m_secUi->passwordPreviewCleartextCheckBox->isChecked());

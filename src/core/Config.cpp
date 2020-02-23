@@ -220,7 +220,7 @@ void Config::init(const QString& fileName)
     m_defaults.insert("security/lockdatabaseminimize", false);
     m_defaults.insert("security/lockdatabasescreenlock", true);
     m_defaults.insert("security/passwordsrepeatvisible", true);
-    m_defaults.insert("security/passwordscleartext", false);
+    m_defaults.insert("security/passwordshidden", true);
     m_defaults.insert("security/passwordemptynodots", true);
     m_defaults.insert("security/HidePasswordPreviewPanel", true);
     m_defaults.insert("security/autotypeask", true);
