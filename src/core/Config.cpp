@@ -41,6 +41,12 @@ static const QMap<QString, QString> deprecationMap = {
     {QStringLiteral("security/IconDownloadFallbackToGoogle"), QStringLiteral("security/IconDownloadFallback")},
     // >x.x.x
     {QStringLiteral("IgnoreGroupExpansion"), QStringLiteral("TrackNonDataChanges")},
+    // >x.x.x
+    {QStringLiteral("security/passwordsrepeat"), QStringLiteral("security/passwordsrepeatvisible")},
+    // >x.x.x
+    {QStringLiteral("security/passwordscleartext"), QStringLiteral("security/passwordshidden")},
+    // >x.x.x
+    {QStringLiteral("security/passwordemptynodots"), QStringLiteral("security/passwordemptyplaceholder")},
 };
 
 Config* Config::m_instance(nullptr);
@@ -104,8 +110,11 @@ void Config::upgrade()
     for (const auto& setting : keys) {
         if (m_settings->contains(setting)) {
             if (!deprecationMap.value(setting).isEmpty()) {
-                if (setting == QStringLiteral("IgnoreGroupExpansion")) {
-                    // Add entry with new name and opposite of old entry's value
+                if (setting == QStringLiteral("IgnoreGroupExpansion")
+                    || setting == QStringLiteral("security/passwordsrepeat")
+                    || setting == QStringLiteral("security/passwordscleartext")
+                    || setting == QStringLiteral("security/passwordemptynodots")) {
+                    // Keep user's original setting for checkboxes whose meanings were reversed
                     m_settings->setValue(deprecationMap.value(setting), !m_settings->value(setting).toBool());
                 } else {
                     // Add entry with new name and old entry's value
