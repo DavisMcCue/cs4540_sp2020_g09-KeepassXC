@@ -5,6 +5,7 @@
 I was able to complete my issue and gained some more insight into the organization of the codebase.
 #### What didn't go so well:
 Existing unit tests don't touch any of the code I modified, and I didn't have time to add any myself.
+I was only able to manually test my changes.
 #### What have I learned:
 I have a better understanding of how system settings are stored and accessed, as well as how to work with ui elements.
 I also now understand how the application handles settings which have been deprecated or had their internal names changed.
