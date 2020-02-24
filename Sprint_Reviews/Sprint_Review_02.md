@@ -49,11 +49,17 @@ I need to start using debugger tools to efficiently debug the program.
 
 ## Davis McCue
 #### What went well?
+I was able to finally get my project to compile correctly and build and test my changes. I am going to update the windows installer page to make less confusing and easier to follow.
 
 #### What didn’t go so well?
+Trying to find where code over-laps and correctly add my code to chage the way something works.
 
 #### What have I learned?
+I have learned how to further navigate around their code and some what understand how their code works.
 
 #### What still puzzles me?
+What software they are using to create and work the ui folders within keepass.
+Why my clion build is crashing now and I havent done anything and now it deleted my work so, I dont understand why.
 
 #### What will we change to improve?
+I need to try to learn their code and program even further and understand how things connect because when you dig deeper there code can get a bit confusing.
