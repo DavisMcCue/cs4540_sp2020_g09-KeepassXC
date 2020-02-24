@@ -27,15 +27,19 @@ Continuing to understand the layout of the open source code and finding some hel
 ## Prabesh Poudel
 
 #### What went well?
-
+The program no longer crashes when provided with invalid URL.
 #### What didn’t go so well?
-
+I had to spend more than the estimated time to fix the issue.
 #### What have I learned?
-
+Even experienced programmer such as the maintainers of this project may sometimes
+fail to understand how a function from a framework works, leading to very strange
+and weird runtime error. I have learned that if I cannot find any bug after searching
+for hours, I would have to verify the results from frameworks.
 #### What still puzzles me?
-
+I am trying to find a way to quickly compile and test the application which currently
+takes around 3-4 minutes to build.
 #### What will we change to improve?
-
+I need to start using debugger tools to efficiently debug the program.
 
 ## Davis McCue
 #### What went well?
