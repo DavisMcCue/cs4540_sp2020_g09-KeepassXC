@@ -2,15 +2,20 @@
 
 ## Andrew Meyer
 #### What went well:
-
+I was able to complete my issue and gained some more insight into the organization of the codebase.
 #### What didn't go so well:
-
+Existing unit tests don't touch any of the code I modified, and I didn't have time to add any myself.
 #### What have I learned:
-
+I have a better understanding of how system settings are stored and accessed, as well as how to work with ui elements.
+I also now understand how the application handles settings which have been deprecated or had their internal names changed.
 #### What still puzzles me:
-
+I'm still familiarizing myself with the automated tests, and what exactly they cover.
+So far, none of the changes I've made have caused tests to fail, so it seems the tests don't cover everything.
+Of those, I think my changes to the deprecation/upgrade function are worth unit testing, 
+but I'm still not very familiar with how this project handles testing.
 #### What can we change to improve:
-
+Get more comfortable with the existing automatic tests so I can quickly add them for future changes, 
+especially as I start working on more significant issues.
 
 ## Brad Puthoff
 #### What went well:
