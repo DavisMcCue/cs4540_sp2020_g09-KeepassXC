@@ -87,9 +87,9 @@ if(WITH_XC_ALL)
 endif()
 
 if(WITH_XC_SSHAGENT OR WITH_XC_KEESHARE)
-  set(WITH_XC_CRYPTO_SSH ON)
+    set(WITH_XC_CRYPTO_SSH ON)
 else()
-  set(WITH_XC_CRYPTO_SSH OFF)
+    set(WITH_XC_CRYPTO_SSH OFF)
 endif()
 
 # Prefer WITH_XC_NETWORKING setting over WITH_XC_UPDATECHECK
@@ -226,11 +226,11 @@ if(CMAKE_BUILD_TYPE_LOWER STREQUAL "debug")
 endif()
 
 if (NOT HAIKU)
-if((CMAKE_COMPILER_IS_GNUCXX AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.8.999) OR CMAKE_COMPILER_IS_CLANGXX)
-    add_gcc_compiler_flags("-fstack-protector-strong")
-else()
-    add_gcc_compiler_flags("-fstack-protector --param=ssp-buffer-size=4")
-endif()
+    if((CMAKE_COMPILER_IS_GNUCXX AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.8.999) OR CMAKE_COMPILER_IS_CLANGXX)
+        add_gcc_compiler_flags("-fstack-protector-strong")
+    else()
+        add_gcc_compiler_flags("-fstack-protector --param=ssp-buffer-size=4")
+    endif()
 endif()
 
 add_gcc_compiler_cxxflags("-fno-exceptions -fno-rtti")
@@ -268,12 +268,12 @@ if(CMAKE_COMPILER_IS_GNUCXX)
 endif()
 
 if(WITH_COVERAGE AND CMAKE_COMPILER_IS_CLANGXX)
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-instr-generate -fcoverage-mapping")
-  # then:
-  # $ llvm-profdata merge -sparse default.profraw -o default.profdata
-  # $ llvm-cov show ./tests/${the_test_binary} \
-  #      -format=html -instr-profile=default.profdata -output-dir=./coverages \
-  #      `find src -iname '*.h' -or -iname '*.cpp'`
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fprofile-instr-generate -fcoverage-mapping")
+    # then:
+    # $ llvm-profdata merge -sparse default.profraw -o default.profdata
+    # $ llvm-cov show ./tests/${the_test_binary} \
+    #      -format=html -instr-profile=default.profdata -output-dir=./coverages \
+    #      `find src -iname '*.h' -or -iname '*.cpp'`
 endif()
 
 if(CMAKE_COMPILER_IS_GNUCC)
@@ -295,7 +295,7 @@ add_gcc_compiler_cflags("-std=c99")
 add_gcc_compiler_cxxflags("-std=c++11")
 
 if((CMAKE_COMPILER_IS_GNUCXX AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 4.9.99) OR
-    (CMAKE_COMPILER_IS_CLANGXX AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 3.6.99))
+(CMAKE_COMPILER_IS_CLANGXX AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER 3.6.99))
     add_gcc_compiler_cxxflags("-fsized-deallocation")
 endif()
 
