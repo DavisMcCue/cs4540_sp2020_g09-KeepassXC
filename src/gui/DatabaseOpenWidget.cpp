@@ -151,7 +151,6 @@ void DatabaseOpenWidget::load(const QString& filename)
     m_filename = filename;
     m_ui->fileNameLabel->setRawText(m_filename);
 
-    clearForms();
     m_ui->comboKeyFile->addItem(tr("Select key file..."), -1);
     m_ui->comboKeyFile->setCurrentIndex(0);
     m_ui->keyFileClearIcon->setVisible(false);

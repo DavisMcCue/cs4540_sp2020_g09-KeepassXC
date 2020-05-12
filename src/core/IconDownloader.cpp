@@ -73,7 +73,9 @@ void IconDownloader::setUrl(const QString& entryUrl)
 {
     m_url = entryUrl;
     QUrl url(m_url);
-
+    if (!url.isValid()) {
+        return;
+    }
 
     m_redirects = 0;
     m_urlsToTry.clear();
